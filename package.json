@@ -1,0 +1,17 @@
+{
+  "name": "weather-prompt",
+  "version": "0.0.1",
+  "description": "Set the bash prompt to the weather",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "node-cmd": "^1.1.1",
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "R.V.S.",
+  "license": "ISC"
+}

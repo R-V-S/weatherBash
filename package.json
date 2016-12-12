@@ -9,8 +9,8 @@
     "node-fetch": "^1.6.3"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "bin": {
+    "snippet": "weather"
   },
   "author": "R.V.S.",
   "license": "ISC"

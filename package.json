@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "bin": {
-    "snippet": "weather"
+    "weather": "./index.js"
   },
   "author": "R.V.S.",
   "license": "ISC"

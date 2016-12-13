@@ -1,9 +1,10 @@
-+ #!/usr/bin/env node
+#!/usr/bin/env node
 
 const fetch = require('node-fetch')
 const cmd = require('node-cmd')
 const chalk = require('chalk')
-const config = require('./config.js')
+const os = require('os')
+const config = require( os.homedir() + '/.weather_prompt_config')
 
 function convertKtoF(k) {
   return Math.round(k * 1.8 - 459.67)
@@ -48,9 +49,9 @@ function getForecast(zipOrCity, country) {
       case 3: icon = '💧'; color = 'blue'; break
       case 5: icon = '🌧'; color = 'blue'; break
       case 6: icon = '⛄️'; break
-      case 7: icon = '⬜️'; color = 'gray'; break
+      case 7: icon = '🌫'; color = 'gray'; break
       case 8:
-        if (Date.now() > data.sys.sunset) {
+        if (Date.now() > data.sys.sunset || Date.now() < date.sys.sunrise) {
           icon = '🌘'; break
         }
         switch (condition) {
@@ -68,8 +69,9 @@ function getForecast(zipOrCity, country) {
           case 903: icon = '🍦'; break
           case 904: icon = '🔥'; color = 'red'; break
           case 905: case 951: case 952: case 953: case 954:
-          case 955: case 956: case 957: case 958: case 959:
             icon = '🍃'; break
+          case 955: case 956: case 957: case 958: case 959:
+            icon = '💨'; break
           case 906: icon = '☃️'; break
         } break
     }

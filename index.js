@@ -51,7 +51,8 @@ function getForecast(zipOrCity, country) {
       case 6: icon = '⛄️'; break
       case 7: icon = '🌫'; color = 'gray'; break
       case 8:
-        if (Date.now() > data.sys.sunset || Date.now() < date.sys.sunrise) {
+        var timestamp = Date.now() / 1000
+        if (timestamp > data.sys.sunset || timestamp < data.sys.sunrise) {
           icon = '🌘'; break
         }
         switch (condition) {

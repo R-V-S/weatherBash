@@ -14,6 +14,25 @@ function convertKtoC(k) {
   return Math.round(k - 273.15)
 }
 
+function getMoonIcon() {
+  // January 1, 1970 was a waning half moon
+  const averageCycleLength = 29.53
+  const initialOffset = 21
+  const dayLength = (24 * 60 * 60 * 1000)
+  var daysIntoCycle = ( Date.now() - new Date(0) ) / dayLength % averageCycleLength - initialOffset
+  var cycle = Math.round(daysIntoCycle / 4)
+  switch(cycle) {
+    case 0: return '🌕';
+    case 1: return '🌖';
+    case 2: return '🌗';
+    case 3: return '🌘';
+    case 4: return '🌑';
+    case 5: return '🌒';
+    case 6: return '🌓';
+    case 7: return '🌔';
+  }
+}
+
 function getIconAndColor(data) {
   let icon
   let color = config.defaultColor
@@ -28,7 +47,7 @@ function getIconAndColor(data) {
     case 8:
       var timestamp = Date.now() / 1000
       if (timestamp > data.sys.sunset || timestamp < data.sys.sunrise) {
-        icon = '🌘'; break
+        icon = getMoonIcon(); break
       }
       switch (condition) {
         case 800: icon = '☀️'; color = 'yellow'; break

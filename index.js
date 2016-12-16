@@ -100,12 +100,12 @@ function getForecast(zipOrCity, country) {
   }).then( data => {
     let [icon, color] = getIconAndColor(data)
     if (config.destinationFile) {
-      cmd.run(`echo 'export WEATHER_ICON="${icon}"\n' > ${config.destinationFile}`)
-      cmd.run(`echo 'export WEATHER_TEMP="${convertKtoF(data.main.temp)}°F"\n' >> ${config.destinationFile}`)
-      cmd.run(`echo 'export WEATHER_TEMP_HI="${convertKtoF(data.main.temp_max)}°F"\n' >> ${config.destinationFile}`)
-      cmd.run(`echo 'export WEATHER_TEMP_LOW="${convertKtoF(data.main.temp_min)}°F"\n' >> ${config.destinationFile}`)
-      cmd.run(`echo 'export WEATHER_SUNRISE="${prettyFormatTime(data.sys.sunrise)}"\n' >> ${config.destinationFile}`)
-      cmd.run(`echo 'export WEATHER_SUNSET="${prettyFormatTime(data.sys.sunset)}"\n' >> ${config.destinationFile}`)
+      cmd.run(`echo 'export WEATHER_ICON="${icon}"' > ${config.destinationFile}`)
+      cmd.run(`echo 'export WEATHER_TEMP="${convertKtoF(data.main.temp)}°F"' >> ${config.destinationFile}`)
+      cmd.run(`echo 'export WEATHER_TEMP_HI="${convertKtoF(data.main.temp_max)}°F"' >> ${config.destinationFile}`)
+      cmd.run(`echo 'export WEATHER_TEMP_LOW="${convertKtoF(data.main.temp_min)}°F"' >> ${config.destinationFile}`)
+      cmd.run(`echo 'export WEATHER_SUNRISE="${prettyFormatTime(data.sys.sunrise)}"' >> ${config.destinationFile}`)
+      cmd.run(`echo 'export WEATHER_SUNSET="${prettyFormatTime(data.sys.sunset)}"' >> ${config.destinationFile}`)
     }
     console.log( prettyFormat(data, icon, color) )
   })

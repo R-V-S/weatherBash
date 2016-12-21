@@ -14,13 +14,17 @@ function convertKtoC(k) {
   return Math.round(k - 273.15)
 }
 
-function getMoonIcon() {
+function getMoonIcon(date) {
+  date = date || Date.now()
   // January 1, 1970 was a waning half moon
   const averageCycleLength = 29.53
-  const initialOffset = 21
+  const initialOffset = 8
   const dayLength = (24 * 60 * 60 * 1000)
-  var daysIntoCycle = ( Date.now() - new Date(0) ) / dayLength % averageCycleLength - initialOffset
+  var daysIntoCycle = ( date - new Date(0) ) / dayLength
+  daysIntoCycle = (daysIntoCycle + initialOffset) % averageCycleLength
+  console.log(daysIntoCycle, 'daysIntoCycle')
   var cycle = Math.round(daysIntoCycle / 4)
+  console.log('cycle', cycle)
   switch(cycle) {
     case 0: return '🌕';
     case 1: return '🌖';
